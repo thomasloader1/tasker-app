@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import tasks from './sample/tasks.json';
-import Tasks from './components/Tasks';
+import Task from './components/Task';
 
 class App extends Component {
   constructor(){
@@ -15,9 +15,8 @@ class App extends Component {
 
   render(){
     return (
-        <div>
-          <Tasks />
-          <p>{this.state.task.map(e => e.title )}</p>
+        <div className= "container">
+          <Task task = {this.state.task} />
         </div>
       );
 
