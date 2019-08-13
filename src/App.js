@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import tasks from './sample/tasks.json';
-import Task from './components/Task';
+import Tasks from './components/Tasks';
 
 class App extends Component {
   constructor(){
@@ -16,7 +16,7 @@ class App extends Component {
   render(){
     return (
         <div className= "container">
-          <Task task = {this.state.task} />
+          <Tasks task = {this.state.task} />
         </div>
       );
 
