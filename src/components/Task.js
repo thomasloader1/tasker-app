@@ -1,32 +1,43 @@
 import React, { Component, Fragment } from 'react'
 import ButtonSpecial from "./ButtonSpecial";
 export default class Task extends Component {
-	state={
-		color: "card text-white bg-primary mb-3"
+	
+	constructor(){
+		super();
+		this.state={
+			todos
+		}
+		this.priorityCssClass = [];
+		this.priortyCssClass['Baja'] = 'warning';
+		this.priortyCssClass['Media'] = 'primary';
+		this.priortyCssClass['Alta'] = 'danger';
+
 	}
 
 	onChange=(e)=>{
-		if (e.taget.name="espera"){
-			this.setState({color:"card text-white bg-primary mb-3"})
-		}else if (e.taget.name="salio mal") {
+		if (e.taget.value == 1){
+			this.setState({color:"card text-white bg-warning mb-3"})
+		}else if (e.taget.value == "salio mal") {
 			this.setState({color:"card text-white bg-danger mb-3"})
 
 		}
 	}
+
+	getClassName = (priority) => this.state.priorityCssClass[priority];
 
 	render() {
 		const { task } = this.props;
 		return (
 			task.map( e =>{
 				return(
-				<div className={this.state.color} style={{maxWidth: '18rem'}}>
+				<div key={e.id} className={"card text-white bg-"+ this.getClassName(e.priority) +" mb-3"} style={{maxWidth: '18rem'}}>
 					<div className="card-header">{ e.id }</div>
 						<div className="card-body">
 						<h5 className="card-title">{ e.title }</h5>
 						<p className="card-text">{ e.descrip }</p>
 					</div>
 
-					<ButtonSpecial onChange ={ this.onChange }/>
+					<ButtonSpecial onClick ={ this.onClick }/>
 
 				</div>
 				)
